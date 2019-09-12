@@ -1,4 +1,4 @@
-package com.example.roomlivedataapp;
+package com.example.roomlivedataapp.ui.mainScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
-import com.example.roomlivedataapp.ViewModel.WordViewModel;
+import com.example.roomlivedataapp.R;
+import com.example.roomlivedataapp.viewModel.WordViewModel;
 import com.example.roomlivedataapp.adapters.WordListAdapter;
 import com.example.roomlivedataapp.databinding.ActivityMainBinding;
 import com.example.roomlivedataapp.models.Word;
@@ -19,7 +22,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ClickListeners {
     private RecyclerView recyclerView;
     private WordListAdapter adapter;
     private WordViewModel viewModel;
@@ -27,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         viewModel = ViewModelProviders.of(this).get(WordViewModel.class);
+        binding.setVmodel(viewModel);
+        binding.setClick(this);
         init();
 
         //Observer on ViewModel Word List
@@ -52,5 +57,13 @@ public class MainActivity extends AppCompatActivity {
         adapter = new WordListAdapter(this);
         binding.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+
+    int i=0;
+    @Override
+    public void onFabClick() {
+        viewModel.insertWord(new Word("Hello 8"+i));
+        i++;
     }
 }

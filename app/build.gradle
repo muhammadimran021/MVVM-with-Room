@@ -33,7 +33,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
     // Room components
     implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
@@ -45,5 +44,8 @@ dependencies {
 
     implementation "androidx.recyclerview:recyclerview:1.1.0-beta04"
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.android.material:material:1.0.0'
+
+
 
 }

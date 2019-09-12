@@ -1,6 +1,7 @@
-package com.example.roomlivedataapp.ViewModel;
+package com.example.roomlivedataapp.viewModel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -26,5 +27,9 @@ public class WordViewModel extends AndroidViewModel {
 
     public void insertWord(Word word){
         mRepository.insert(word);
+    }
+
+    public void onClick(){
+        Log.d("TAG","Click!!!");
     }
 }

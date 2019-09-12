@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="adapter"
             type="com.example.roomlivedataapp.adapters.WordListAdapter" />
+
+        <variable
+            name="vmodel"
+            type="com.example.roomlivedataapp.viewModel.WordViewModel" />
+
+        <variable
+            name="click"
+            type="com.example.roomlivedataapp.ui.mainScreen.ClickListeners" />
+
     </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".ui.mainScreen.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -19,6 +33,16 @@
             android:layout_margin="16dp"
             android:adapter="@{adapter}"
             tools:listitem="@layout/word_item_layout" />
-    </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginRight="56dp"
+            android:layout_marginBottom="48dp"
+            android:onClick="@{()->click.onFabClick()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
