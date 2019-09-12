@@ -1,6 +1,7 @@
 package com.example.roomlivedataapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.os.Handler;
 
 import com.example.roomlivedataapp.ViewModel.WordViewModel;
 import com.example.roomlivedataapp.adapters.WordListAdapter;
+import com.example.roomlivedataapp.databinding.ActivityMainBinding;
 import com.example.roomlivedataapp.models.Word;
 
 import java.util.List;
@@ -21,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private WordListAdapter adapter;
     private WordViewModel viewModel;
+    private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
         viewModel = ViewModelProviders.of(this).get(WordViewModel.class);
         init();
 
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         recyclerView = findViewById(R.id.recyclerview);
         adapter = new WordListAdapter(this);
-        recyclerView.setAdapter(adapter);
+        binding.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
