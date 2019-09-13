@@ -15,7 +15,7 @@
 
         <variable
             name="click"
-            type="com.example.roomlivedataapp.ui.mainScreen.ClickListeners" />
+            type="com.example.roomlivedataapp.screens.roomDataScreen.ClickListeners" />
 
     </data>
 
@@ -24,7 +24,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.mainScreen.MainActivity">
+        tools:context=".screens.roomDataScreen.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"

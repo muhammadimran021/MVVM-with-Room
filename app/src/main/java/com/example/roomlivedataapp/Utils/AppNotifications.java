@@ -10,7 +10,7 @@ import android.graphics.Color;
 import androidx.core.app.NotificationCompat;
 
 import com.example.roomlivedataapp.R;
-import com.example.roomlivedataapp.ui.mainScreen.MainActivity;
+import com.example.roomlivedataapp.screens.roomDataScreen.MainActivity;
 
 public class AppNotifications {
     // Constants for the notification actions buttons.
