@@ -11,7 +11,7 @@
 
         <variable
             name="vmodel"
-            type="com.example.roomlivedataapp.viewModel.WordViewModel" />
+            type="com.example.roomlivedataapp.screens.roomDataScreen.WordViewModel" />
 
         <variable
             name="click"

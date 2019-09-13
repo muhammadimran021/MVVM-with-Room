@@ -6,6 +6,11 @@
         <variable
             name="onClick"
             type="com.example.roomlivedataapp.screens.mainScreen.MainClicks" />
+
+        <variable
+            name="viewModel"
+            type="com.example.roomlivedataapp.screens.mainScreen.MainNewActivityViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,5 +1,11 @@
 package com.example.roomlivedataapp.screens.roomDataScreen;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -7,15 +13,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-
 import com.example.roomlivedataapp.R;
 import com.example.roomlivedataapp.Utils.AppNotifications;
-import com.example.roomlivedataapp.viewModel.WordViewModel;
 import com.example.roomlivedataapp.adapters.WordListAdapter;
 import com.example.roomlivedataapp.databinding.ActivityMainBinding;
 import com.example.roomlivedataapp.models.Word;
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements ClickListeners {
     private ActivityMainBinding binding;
     private NotificationReceiver mReceiver = new NotificationReceiver();
     AppNotifications appNotifications;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements ClickListeners {
             public void run() {
                 viewModel.insertWord(new Word("Hello7"));
             }
-        },1000);
+        }, 1000);
     }
 
     private void init() {
@@ -70,13 +70,14 @@ public class MainActivity extends AppCompatActivity implements ClickListeners {
     }
 
 
-    int i=0;
+    int i = 0;
+
     @Override
     public void onFabClick() {
-        viewModel.insertWord(new Word("Hello 8"+i));
+        viewModel.insertWord(new Word("Hello 8" + i));
         i++;
         appNotifications = new AppNotifications(this);
-        appNotifications.SendNotification(this);
+        appNotifications.SendNotification(this, "Welcome To Google Associate", "this is Room Data");
     }
 
     /**
@@ -101,12 +102,12 @@ public class MainActivity extends AppCompatActivity implements ClickListeners {
          * Receives the incoming broadcasts and responds accordingly.
          *
          * @param context Context of the app when the broadcast is received.
-         * @param intent The broadcast intent containing the action.
+         * @param intent  The broadcast intent containing the action.
          */
         @Override
         public void onReceive(Context context, Intent intent) {
             // Update the notification.
-            appNotifications.updateNotification(context);
+            appNotifications.updateNotification(context, "Notification Updated!!!", "Room Data Updated");
         }
     }
 }

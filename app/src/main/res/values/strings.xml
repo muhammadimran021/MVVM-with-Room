@@ -3,4 +3,12 @@
     <string name="placeholder">placeholder text</string>
     <string name="update">Update Notification</string>
     <string name="notification_updated">Notification Updated</string>
+    <string name="required_network_type">Required Network Type</string>
+    <string name="none">None</string>
+    <string name="any">Any</string>
+    <string name="wifi">Wifi</string>
+    <string name="device_idle">Device Idle  </string>
+    <string name="device_charging">Device Charging  </string>
+    <string name="schedule_job">Schedule Job</string>
+    <string name="cancel_jobs">Cancel Job</string>
 </resources>

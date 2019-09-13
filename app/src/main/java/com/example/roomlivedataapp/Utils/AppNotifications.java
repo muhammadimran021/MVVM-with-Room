@@ -55,7 +55,7 @@ public class AppNotifications {
         return notifyBuilder;
     }
 
-    public void SendNotification(Context context) {
+    public void SendNotification(Context context,String Title,String Message) {
         // Sets up the pending intent to update the notification.
         // Corresponds to a press of the Update Me! button.
         Intent updateIntent = new Intent(ACTION_UPDATE_NOTIFICATION);
@@ -65,7 +65,7 @@ public class AppNotifications {
         // Build the notification with all of the parameters using helper
         // method.
         NotificationCompat.Builder notifyBuilder = getNotificationBuilder(context,
-                "Rood Data Notification", "Welcome To Notification");
+                Title, Message);
 
         // Add the action button using the pending intent.
         notifyBuilder.addAction(R.drawable.ic_launcher_background,
@@ -74,11 +74,11 @@ public class AppNotifications {
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
     }
 
-    public void updateNotification(Context context) {
+    public void updateNotification(Context context,String Tilte,String Message) {
         // Build the notification with all of the parameters using helper
         // method.
         NotificationCompat.Builder notifyBuilder = getNotificationBuilder(context,
-                "Room Notification Updated!!!", "Notification Updated");
+                Tilte, Message);
 
         // Deliver the notification.
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());

@@ -1,4 +1,4 @@
-package com.example.roomlivedataapp.viewModel;
+package com.example.roomlivedataapp.screens.roomDataScreen;
 
 import android.app.Application;
 import android.util.Log;
