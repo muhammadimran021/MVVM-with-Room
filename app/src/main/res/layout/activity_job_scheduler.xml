@@ -120,7 +120,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:text="@={model.seekBarProgress + ``}"
             app:layout_constraintBottom_toTopOf="@+id/seekBar"
             app:layout_constraintLeft_toRightOf="@+id/DeadLine"
             app:layout_constraintTop_toBottomOf="@+id/idleSwitch" />
