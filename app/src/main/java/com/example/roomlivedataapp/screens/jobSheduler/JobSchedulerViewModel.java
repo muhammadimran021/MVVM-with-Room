@@ -82,7 +82,11 @@ public class JobSchedulerViewModel extends AndroidViewModel implements ScheduleC
 
         if (setConstraint) {
             JobInfo myJob = builder.build();
-            mScheduler.schedule(myJob);
+            if (mScheduler !=null) {
+                mScheduler.schedule(myJob);
+            }else {
+
+            }
             mutableLiveData.setValue(true);
         }else {
             mutableLiveData.setValue(false);
@@ -93,7 +97,6 @@ public class JobSchedulerViewModel extends AndroidViewModel implements ScheduleC
     public void onClickCancelJob() {
         if (mScheduler != null) {
             mScheduler.cancelAll();
-            mScheduler = null;
         }
     }
 

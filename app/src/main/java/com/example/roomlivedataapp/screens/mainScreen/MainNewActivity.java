@@ -23,6 +23,7 @@ public class MainNewActivity extends AppCompatActivity implements MainClicks {
         viewModel  = ViewModelProviders.of(this).get(MainNewActivityViewModel.class);
         binding.setOnClick(this);
         binding.setViewModel(viewModel);
+
     }
 
     @Override
