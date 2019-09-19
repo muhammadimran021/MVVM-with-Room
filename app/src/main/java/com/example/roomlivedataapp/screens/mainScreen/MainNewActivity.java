@@ -11,6 +11,7 @@ import com.example.roomlivedataapp.R;
 import com.example.roomlivedataapp.databinding.ActivityMainNewBinding;
 import com.example.roomlivedataapp.screens.jobSheduler.JobSchedulerActivity;
 import com.example.roomlivedataapp.screens.roomDataScreen.MainActivity;
+import com.example.roomlivedataapp.screens.workManager.WorkManager;
 
 public class MainNewActivity extends AppCompatActivity implements MainClicks {
     private ActivityMainNewBinding binding;
@@ -20,7 +21,7 @@ public class MainNewActivity extends AppCompatActivity implements MainClicks {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_new);
-        viewModel  = ViewModelProviders.of(this).get(MainNewActivityViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(MainNewActivityViewModel.class);
         binding.setOnClick(this);
         binding.setViewModel(viewModel);
 
@@ -28,13 +29,21 @@ public class MainNewActivity extends AppCompatActivity implements MainClicks {
 
     @Override
     public void onRoomButtonClick() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        startActivity(MainActivity.class);
     }
 
     @Override
     public void onJobSchedulerClick() {
-        Intent intent = new Intent(this, JobSchedulerActivity.class);
+        startActivity(JobSchedulerActivity.class);
+    }
+
+    @Override
+    public void onWorkManagerClick() {
+        startActivity(WorkManager.class);
+    }
+
+    private void startActivity(Class tClass) {
+        Intent intent = new Intent(this, tClass);
         startActivity(intent);
     }
 }

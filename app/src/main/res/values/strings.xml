@@ -12,4 +12,14 @@
     <string name="schedule_job">Schedule Job</string>
     <string name="cancel_jobs">Cancel Job</string>
     <string name="job_scheduled">Job Scheduled</string>
+    <string name="blur_lv_1">A Little Blur</string>
+    <string name="blur_lv_2">More Blured</string>
+    <string name="blur_lv_3">The most blured</string>
+    <string name="cancel_work">Cancel Work</string>
+    <string name="see_file">See file</string>
+    <string name="select_image">Select Image</string>
+
+    <!-- Messages -->
+    <string name="set_permissions_in_settings">Go to Settings -> Apps and Notifications ->
+        WorkManager Demo -> App Permissions and grant access to Storage.</string>
 </resources>
