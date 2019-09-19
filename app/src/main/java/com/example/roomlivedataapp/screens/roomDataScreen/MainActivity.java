@@ -50,12 +50,12 @@ public class MainActivity extends AppCompatActivity implements ClickListeners {
             }
         });
 
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                viewModel.insertWord(new Word("Hello7"));
-            }
-        }, 1000);
+//        new Timer().schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                viewModel.insertWord(new Word("Hello7"));
+//            }
+//        }, 1000);
     }
 
     private void init() {
