@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/cancel_work"
                 android:textAllCaps="false"
+                android:onClick="@{()->click.cancelWorkClick()}"
                 android:visibility="@{model.isCancel}" />
             <ProgressBar
                 android:id="@+id/progress_bar"
@@ -70,7 +71,8 @@
                 android:layout_marginRight="5dp"
                 android:text="@string/see_file"
                 android:textAllCaps="false"
-                android:visibility="@{model.isSeeFile}"/>
+                android:onClick="@{()->click.seeFilesClick()}"
+                android:visibility="@{model.isSeeFile,default = gone}"/>
 
 
         </LinearLayout>

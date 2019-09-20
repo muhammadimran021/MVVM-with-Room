@@ -31,6 +31,8 @@ public class WorkManageViewModel extends AndroidViewModel {
     private Uri mImageUri;
     private Uri mOutputUri;
     private LiveData<List<WorkInfo>> mSavedWorkInfo;
+
+
     //ProgressBar
     public MutableLiveData<Boolean> isProgressVisible = new MutableLiveData<>();
     public LiveData<Boolean> isVisible = isProgressVisible;
@@ -122,8 +124,17 @@ public class WorkManageViewModel extends AndroidViewModel {
         mImageUri = uriOrNull(uri);
     }
 
+
+    void setOutputUri(String outputImageUri) {
+        mOutputUri = uriOrNull(outputImageUri);
+    }
+
     Uri getImageUri() {
         return mImageUri;
+    }
+
+    Uri getOutputUri() {
+        return mOutputUri;
     }
 
     private Uri uriOrNull(String uri) {
@@ -137,7 +148,5 @@ public class WorkManageViewModel extends AndroidViewModel {
         return mSavedWorkInfo;
     }
 
-    public void setOutputUri(String outputImageUri) {
 
-    }
 }

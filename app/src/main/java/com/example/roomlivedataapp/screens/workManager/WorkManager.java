@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -54,10 +53,11 @@ public class WorkManager extends AppCompatActivity implements WorkManagerListene
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_work_manager);
         viewModel = ViewModelProviders.of(this).get(WorkManageViewModel.class);
+        binding.setLifecycleOwner(this);
         binding.setModel(viewModel);
         binding.setClick(this);
 
-        setUriInViewModel();
+
         blurWorkObserver();
     }
 
@@ -92,7 +92,7 @@ public class WorkManager extends AppCompatActivity implements WorkManagerListene
                     // If there is an output file show "See File" button
                     if (!TextUtils.isEmpty(outputImageUri)) {
                         viewModel.setOutputUri(outputImageUri);
-                       viewModel.isSeeFileVisible.setValue(true);
+                        viewModel.isSeeFileVisible.setValue(true);
                     }
                 }
             }
@@ -100,22 +100,20 @@ public class WorkManager extends AppCompatActivity implements WorkManagerListene
     }
 
     private void showWorkFinished() {
-        viewModel.isProgressVisible.setValue(true);
-        viewModel.isCancelVisible.setValue(true);
+        viewModel.isProgressVisible.setValue(false);
+        viewModel.isCancelVisible.setValue(false);
         viewModel.isGoVisible.setValue(true);
     }
 
     private void showWorkInProgress() {
-        viewModel.isProgressVisible.postValue(true);
-        viewModel.isCancelVisible.postValue(true);
-        viewModel.isGoVisible.postValue(false);
-        viewModel.isSeeFileVisible.postValue(false);
+        viewModel.isProgressVisible.setValue(true);
+        viewModel.isCancelVisible.setValue(true);
+        viewModel.isGoVisible.setValue(false);
+        viewModel.isSeeFileVisible.setValue(false);
     }
 
-    private void setUriInViewModel() {
-        Intent intent = getIntent();
-        String imageUriExtra = intent.getStringExtra(Constants.KEY_IMAGE_URI);
-        viewModel.setImageUri(imageUriExtra);
+    private void setUriInViewModel(String imageUri) {
+        viewModel.setImageUri(imageUri);
         if (viewModel.getImageUri() != null) {
             Glide.with(this).load(viewModel.getImageUri()).into(binding.ImageView);
         }
@@ -198,7 +196,7 @@ public class WorkManager extends AppCompatActivity implements WorkManagerListene
             Log.e(TAG, "Invalid input image Uri.");
             return;
         }
-
+        setUriInViewModel(imageUri.toString());
         Glide.with(this).load(imageUri).into(binding.ImageView);
     }
 
@@ -214,7 +212,13 @@ public class WorkManager extends AppCompatActivity implements WorkManagerListene
 
     @Override
     public void seeFilesClick() {
-
+        Uri currentUri = viewModel.getOutputUri();
+        if (currentUri != null) {
+            Intent actionView = new Intent(Intent.ACTION_VIEW, currentUri);
+            if (actionView.resolveActivity(getPackageManager()) != null) {
+                startActivity(actionView);
+            }
+        }
     }
 
     @Override
